@@ -9,31 +9,28 @@
     "[dart]": {
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
-        "editor.rulers": [
-            80
-        ],
+        "editor.rulers": [80],
         "editor.selectionHighlight": false,
         "editor.suggest.snippetsPreventQuickSuggestions": false,
         "editor.suggestSelection": "first",
         "editor.tabCompletion": "onlySnippets",
-        "editor.wordBasedSuggestions": false
+        "editor.wordBasedSuggestions": "off"
     },
-    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
-    "editor.minimap.enabled": true,
     "tabnine.experimentalAutoImports": true,
     "cph.general.defaultLanguage": "cpp",
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+        "{hexdiff}:/**/*.*": "hexEditor.hexedit",
+        "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
+        "*.ipynb": "jupyter-notebook",
+        "*.mp3": "wavPreview.audioPreview",
+        "*.ogg": "wavPreview.audioPreview",
+        "*.qrc": "qt-core.qrcEditor"
     },
     "json.maxItemsComputed": 10000,
-    "indentRainbow.excludedLanguages": [
-    "C/C++",
-        "plaintext"
-    ],
+    "indentRainbow.excludedLanguages": ["C/C++", "plaintext"],
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true,
     "code-runner.executorMap": {
-
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
         "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
@@ -86,10 +83,10 @@
         "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
     },
     "code-runner.executorMapByGlob": {
-
         "pom.xml": "cd $dir && mvn clean package"
     },
     "C_Cpp.autocompleteAddParentheses": true,
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
@@ -112,25 +109,31 @@
             "icon": "terminal-cmd"
         },
         "Git Bash": {
-            "source": "Git Bash"
+            "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+            "args": ["--login", "-i"]
         },
         "cmder": {
             "path": "C:\\WINDOWS\\System32\\cmd.exe",
+            "args": ["/K", "C:\\Cmder\\vendor\\bin\\vscode_init.cmd"]
+        },
+        "x64 msvc": {
+            "path": "C:\\WINDOWS\\System32\\cmd.exe",
             "args": [
                 "/K",
-                "C:\\Cmder\\vendor\\bin\\vscode_init.cmd"
+                "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat"
             ]
         }
     },
     "jupyter.jupyterServerType": "local",
-    "editor.inlineSuggest.enabled": true,
     "terminal.integrated.commandsToSkipShell": [
-        "language-julia.interrupt"
+        "language-julia.interrupt",
+        "kilo-code.new.agentManagerOpen",
+        "kilo-code.new.agentManager.showTerminal"
     ],
     "julia.symbolCacheDownload": true,
     "bracket-pair-colorizer-2.depreciation-notice": false,
     "julia.enableTelemetry": false,
-    "python.defaultInterpreterPath": "C:\\Python39\\python.exe",
+    "python.defaultInterpreterPath": "",
     "notebook.lineNumbers": "on",
     "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.latex.tools": [
@@ -144,94 +147,433 @@
                 "-file-line-error",
                 "%DOC%"
             ]
-        },
+        }
     ],
     "julia.enableCrashReporter": false,
-    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.typeCheckingMode": "basic",
     "python.analysis.useLibraryCodeForTypes": true,
-    "workbench.iconTheme": "vscode-icons",
-    "vsicons.dontShowNewVersionMessage": true,
-    "notebook.output.textLineLimit": 300,
+    "notebook.output.textLineLimit": 30,
     "notebook.cellFocusIndicator": "border",
     "notebook.cellToolbarVisibility": "hover",
     "notebook.consolidatedOutputButton": false,
     "github.copilot.enable": {
-        "*": true,
-        "yaml": false,
+        "*": false,
         "plaintext": false,
         "markdown": true,
-        "python": true
+        "scminput": false,
+        "yaml": false,
+        "python": true,
+        "cpp": false,
+        "typescriptreact": true
     },
     "highlightLine.borderColor": "#65EAB951",
     "files.autoSave": "afterDelay",
-    "terminal.integrated.defaultProfile.windows": "cmder",
-    "editor.guides.bracketPairs": true,
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
     "[latex]": {
         "editor.defaultFormatter": "mathematic.vscode-latex"
     },
     "latex-workshop.latex.recipes": [
-
         {
             "name": "latexmk 🔃",
-            "tools": [
-                "latexmk"
-            ]
+            "tools": ["latexmk"]
         },
         {
             "name": "latexmk (latexmkrc)",
-            "tools": [
-                "latexmk_rconly"
-            ]
+            "tools": ["latexmk_rconly"]
         },
         {
             "name": "latexmk (lualatex)",
-            "tools": [
-                "lualatexmk"
-            ]
+            "tools": ["lualatexmk"]
         },
         {
             "name": "latexmk (xelatex)",
-            "tools": [
-                "xelatexmk"
-            ]
+            "tools": ["xelatexmk"]
         },
         {
             "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
-            "tools": [
-                "pdflatex",
-                "bibtex",
-                "pdflatex",
-                "pdflatex"
-            ]
+            "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
         },
         {
             "name": "Compile Rnw files",
-            "tools": [
-                "rnw2tex",
-                "latexmk"
-            ]
+            "tools": ["rnw2tex", "latexmk"]
         },
         {
             "name": "Compile Jnw files",
-            "tools": [
-                "jnw2tex",
-                "latexmk"
-            ]
+            "tools": ["jnw2tex", "latexmk"]
         },
         {
             "name": "tectonic",
-            "tools": [
-                "tectonic"
-            ]
+            "tools": ["tectonic"]
         }
     ],
-    "workbench.colorTheme": "Black Italic",
+
     "editor.smoothScrolling": false,
     "terminal.integrated.smoothScrolling": false,
-    "window.zoomLevel": 1,
-    "window.commandCenter": true,
     "jupyter.notebookRunGroups.groupCount": 3,
-    "workbench.activityBar.visible": false,
     "svelte.enable-ts-plugin": true,
-    "svelte.plugin.svelte.note-new-transformation": false
+    "svelte.plugin.svelte.note-new-transformation": false,
+    "editor.inlayHints.enabled": "on",
+    "python.analysis.indexing": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": true,
+    "kite.showWelcomeNotificationOnStartup": false,
+    "codegpt.apiKey": "",
+    "codegpt.model": "code-davinci-002",
+    "github.copilot.advanced": {},
+    "editor.largeFileOptimizations": false,
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.autopep8"
+        // "editor.defaultFormatter": "ms-python.python"
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+    "C_Cpp.inlayHints.referenceOperator.enabled": true,
+    "C_Cpp.intelliSenseUpdateDelay": 300,
+    "C_Cpp.default.compilerPath": "C:\\mingw64\\bin\\g++.exe",
+    // "C_Cpp.default.compilerPath": "C:\\MinGW\\bin\\g++.exe",
+    "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+    "C_Cpp.default.cStandard": "c17",
+    "powermode.enabled": false,
+    "aws.telemetry": false,
+    "errorLens.enabled": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "explorer.confirmDelete": false,
+    "workbench.startupEditor": "none",
+    "editor.inlayHints.padding": true,
+    "telemetry.telemetryLevel": "off",
+    "window.customMenuBarAltFocus": false,
+    "window.restoreWindows": "none",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "todo-tree.highlights.customHighlight": {
+        // "TODO": {
+        //     "icon": "check",
+        //     "type": "line",
+        //     "background": "green",
+        // },
+        // "FIXME": {
+        //     "type": "line",
+        //     "foreground": "yellow",
+        //     "iconColour": "yellow",
+        //     "gutterIcon": true
+        // }
+    },
+    "excalidraw.theme": "dark",
+    "notebook.output.scrolling": true,
+    "tailwind-fold.autoFold": false,
+    "tailwind-fold.unfoldedTextOpacity": 0.3,
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "aws.suppressPrompts": {
+        "codeWhispererNewWelcomeMessage": true
+    },
+    "cmake.showOptionsMovedNotification": false,
+    "C_Cpp.default.cppStandard": "c++20",
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "window.commandCenter": false,
+    "errorLens.messageEnabled": true,
+    "notebook.output.minimalErrorRendering": true,
+    "markdown.editor.drop.enabled": "always",
+    "markdown.editor.filePaste.enabled": "always",
+    "notebook.experimental.variablesView": true,
+    "remote.SSH.remotePlatform": {
+        "172.23.153.95": "windows",
+        "192.168.131.40": "linux"
+    },
+    "github.copilot.editor.enableAutoCompletions": true,
+    "editor.minimap.enabled": false,
+    "gitlens.graph.minimap.enabled": false,
+    "git.confirmSync": false,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.visualModeKeyBindings": [],
+    "vim.insertModeKeyBindings": [],
+    "git.enableSmartCommit": true,
+    "supermaven.enable": {
+        "javascript": true,
+        "*": true,
+        "cpp": true
+    },
+    "supermaven.allowGitignore": true,
+    "workbench.iconTheme": "catppuccin-macchiato",
+    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+    "security.allowedUNCHosts": ["wsl.localhost"],
+    "python.languageServer": "Default",
+    "vim.foldfix": true,
+    "explorer.confirmDragAndDrop": false,
+    "cmake.showConfigureWithDebuggerNotification": false,
+
+    // Color Customizations (GHD)
+    "workbench.colorCustomizations": {
+        "[Black Italic]": {
+            // "notebook.cellEditorBackground": "#dadada",
+            // "notebook.cellBorderColor": "#a8a8a8",
+            "notebook.editorBackground": "#0c0c0c"
+        },
+        "[Claude Theme]": {
+            "editor.background": "#30302e",
+            "editorLineNumber.activeForeground": "default",
+            "editorCursor.background": "default",
+            "editorCursor.foreground": "default",
+            "sideBar.background": "#262624",
+            "sideBar.foreground": "#abb2bf",
+            "list.activeSelectionBackground": "#1f1f1d",
+            "list.focusAndSelectionOutline": "#ff000000",
+            "sideBarSectionHeader.background": "#1f1f1d",
+            "editorGroupHeader.tabsBackground": "#1f1f1d",
+            "editorGroupHeader.tabsBorder": "#1f1f1d",
+            "editorInlayHint.foreground": "#abb2bf55",
+            "editorInlayHint.background": "#30302e00"
+        }
+    },
+
+    // Token Color Customizations (GHD)
+    "editor.tokenColorCustomizations": {
+        "[Claude Theme]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword.operator, entity.name.function",
+                    "settings": {
+                        "foreground": "#61afef"
+                    }
+                },
+                {
+                    "scope": "storage.type, storage.modifier, keyword.control, keyword.other, entity.other.attribute-name.pragma.preprocessor.cpp",
+                    "settings": {
+                        "foreground": "#c678dd"
+                    }
+                },
+                {
+                    "scope": "variable.parameter, variable.other.property, variable, source, punctuation",
+                    "settings": {
+                        "foreground": "#abb2bf"
+                    }
+                },
+                {
+                    "scope": "constant, constant.numeric, entity.name.type.class, entity.name.type, entity.name.namespace",
+                    "settings": {
+                        "foreground": "#D19A66"
+                    }
+                },
+                {
+                    "scope": "punctuation.definition.directive.cpp",
+                    "settings": {
+                        "foreground": "#e06c75"
+                    }
+                },
+                {
+                    "scope": "comment, punctuation.definition.comment",
+                    "settings": {
+                        "foreground": "#5c6370",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#98C379"
+                    }
+                }
+            ]
+        },
+        "[Tokyo Night]": {
+            "textMateRules": [
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#7AA2F7" // yellow-ish
+                    }
+                },
+                {
+                    "scope": [
+                        "meta.body.function.definition.cpp",
+                        "meta.function.definition.cpp",
+                        "source.cpp"
+                    ],
+                    "settings": {
+                        "foreground": "#7AA2F7" // yellow-ish
+                    }
+                },
+                {
+                    "scope": [
+                        "storage.type",
+                        "entity.name.type",
+                        "support.type"
+                    ],
+                    "settings": {
+                        "foreground": "#dfb260" // orange
+                    }
+                },
+                {
+                    "scope": ["entity.name.namespace"],
+                    "settings": {
+                        "foreground": "#dfb260" // orange
+                    }
+                },
+                {
+                    "scope": ["entity.name.function.preprocessor"],
+                    "settings": {
+                        "foreground": "#ff9e64" // white
+                    }
+                },
+                {
+                    "scope": [
+                        "storage.type.modifier.access.control.private.cpp",
+                        "storage.type.modifier.access.control.public.cpp",
+                        "storage.type.class.cpp"
+                    ],
+                    "settings": {
+                        "foreground": "#BB9AF7" // white
+                    }
+                },
+                {
+                    "scope": ["punctuation.definition.directive.cpp"],
+                    "settings": {
+                        "foreground": "#BB9AF7" // white
+                    }
+                },
+                {
+                    "scope": ["storage.type.struct.cpp"],
+                    "settings": {
+                        "foreground": "#BB9AF7" // white
+                    }
+                },
+                {
+                    "scope": ["punctuation.definition.string"],
+                    "settings": {
+                        "foreground": "#9ECE6A" // white
+                    }
+                },
+                {
+                    "scope": ["storage.source.cmake"],
+                    "settings": {
+                        "foreground": "#e9b555" // white
+                    }
+                }
+            ]
+        }
+    },
+    "codeium.enableConfig": {
+        "*": true,
+        "glsl": true,
+        "plaintext": true
+    },
+    "chat.instructionsFilesLocations": {
+        ".github/instructions": true,
+        "C:\\Users\\ghd\\AppData\\Local\\Temp\\postman-http-request-post-response.instructions.md": true,
+        "C:\\Users\\ghd\\AppData\\Local\\Temp\\postman-http-request-pre-request.instructions.md": true,
+        "/tmp/postman-http-request-post-response.instructions.md": true,
+        "/tmp/postman-http-request-pre-request.instructions.md": true,
+        "C:\\Users\\ghd\\AppData\\Local\\Temp\\postman-collections-post-response.instructions.md": true,
+        "C:\\Users\\ghd\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
+        "C:\\Users\\ghd\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
+        "C:\\Users\\ghd\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true,
+        "/tmp/postman-collections-post-response.instructions.md": true,
+        "/tmp/postman-collections-pre-request.instructions.md": true,
+        "/tmp/postman-folder-post-response.instructions.md": true,
+        "/tmp/postman-folder-pre-request.instructions.md": true,
+        "C:\\Users\\EXO\\AppData\\Local\\Temp\\postman-collections-post-response.instructions.md": true,
+        "C:\\Users\\EXO\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
+        "C:\\Users\\EXO\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
+        "C:\\Users\\EXO\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true,
+        "C:\\Users\\EXO\\AppData\\Local\\Temp\\postman-http-request-post-response.instructions.md": true,
+        "C:\\Users\\EXO\\AppData\\Local\\Temp\\postman-http-request-pre-request.instructions.md": true
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "hediet.vscode-drawio.resizeImages": null,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": false,
+    "window.menuBarVisibility": "toggle",
+    "postman.mcp.notifications.postmanMCP": false,
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.bracketPairColorization.enabled": false,
+    "git.blame.statusBarItem.enabled": true,
+    "terminal.explorerKind": "external",
+    "explorer.fileNesting.patterns": {
+        "*.ts": "${capture}.js",
+        "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+        "*.jsx": "${capture}.js",
+        "*.tsx": "${capture}.ts",
+        "tsconfig.json": "tsconfig.*.json",
+        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+        "*.sqlite": "${capture}.${extname}-*",
+        "*.db": "${capture}.${extname}-*",
+        "*.sqlite3": "${capture}.${extname}-*",
+        "*.db3": "${capture}.${extname}-*",
+        "*.sdb": "${capture}.${extname}-*",
+        "*.s3db": "${capture}.${extname}-*"
+    },
+    "terminal.integrated.fontSize": 13,
+    "github.copilot.chat.byok.ollamaEndpoint": "http://localhost:1234",
+    "kilo-code.allowedCommands": ["git log", "git diff", "git show"],
+    "kilo-code.deniedCommands": [],
+    "qt-core.qtInstallationRoot": "C:\\Qt",
+    "qt-qml.qmlls.enabled": false,
+    "llama-vscode.tool_run_terminal_command_enabled": false,
+    "llama-vscode.tool_search_source_enabled": false,
+    "llama-vscode.tool_read_file_enabled": false,
+    "llama-vscode.tool_list_directory_enabled": false,
+    "llama-vscode.tool_regex_search_enabled": false,
+    "llama-vscode.tool_delete_file_enabled": false,
+    "llama-vscode.tool_get_diff_enabled": false,
+    "llama-vscode.tool_edit_file_enabled": false,
+    "llama-vscode.tool_ask_user_enabled": false,
+    "llama-vscode.tool_custom_tool_enabled": false,
+    "llama-vscode.tool_custom_eval_tool_enabled": false,
+    "llama-vscode.tool_llama_vscode_help_enabled": false,
+    "llama-vscode.tool_update_todo_list_enabled": false,
+    "continue.enableNextEdit": false,
+    "continue.enableTabAutocomplete": false,
+
+    "code-runner.ignoreSelection": true,
+    "C_Cpp.debugShortcut": false,
+
+    "editor.inlineSuggest.enabled": true,
+    "continue.showInlineTip": true,
+    "roo-cline.debug": false,
+    "roo-cline.allowedCommands": ["git log", "git diff", "git show"],
+    "roo-cline.deniedCommands": [],
+    "python.analysis.enablePytestSupport": false,
+    "python.analysis.inlayHints.callArgumentNames": "all",
+    "update.mode": "start",
+    "chat.disableAIFeatures": true,
+    "llama-vscode.ask_upgrade_llamacpp_hours": 72000,
+    "kilo-code.new.autocomplete.enableSmartInlineTaskKeybinding": false,
+    "kilo-code.new.autocomplete.enableAutoTrigger": false,
+    "diffEditor.experimental.showMoves": true,
+    "diffEditor.renderSideBySide": false,
+    "editor.lineHeight": 1.6,
+    "python.analysis.autoFormatStrings": true,
+    "qt-core.additionalQtPaths": [
+        {
+            "name": "Qt-6.11.0-win32-msvc_from_PATH",
+            "path": "D:\\Qt\\6.11.0\\msvc2022_64\\bin\\qtpaths.EXE"
+        }
+    ],
+    "[svelte]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.activityBar.compact": true,
+    "workbench.colorTheme": "GitHub Dark",
+    "workbench.activityBar.location": "top"
 }
